@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sudoku — Beerpal Singh</title>
+  <link rel="stylesheet" href="static/css/main.css" />
+  <link rel="stylesheet" href="static/css/sudoku.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+</head>
+<body class="sudoku-page">
+
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">BS</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Portfolio</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="sudoku-main">
+  <div class="sudoku-layout">
+
+    <!-- LEFT PANEL -->
+    <aside class="sudoku-side">
+      <h1 class="sudoku-title">Sudoku</h1>
+
+      <div class="streak-box">
+        <div class="streak-flame">&#128293;</div>
+        <div>
+          <p class="streak-label">Current Streak</p>
+          <p class="streak-num" id="streakNum">0</p>
+        </div>
+        <div>
+          <p class="streak-label">Best Streak</p>
+          <p class="streak-num" id="bestStreakNum">0</p>
+        </div>
+      </div>
+
+      <div class="game-controls">
+        <label class="diff-label">Difficulty</label>
+        <div class="diff-buttons">
+          <button class="diff-btn active" data-diff="easy">Easy</button>
+          <button class="diff-btn" data-diff="medium">Medium</button>
+          <button class="diff-btn" data-diff="hard">Hard</button>
+        </div>
+        <button class="btn-primary full-width" id="newGameBtn">New Game</button>
+        <button class="btn-ghost full-width" id="hintBtn">Hint</button>
+      </div>
+
+      <div class="timer-box">
+        <span class="timer-label">Time</span>
+        <span class="timer-display" id="timerDisplay">00:00</span>
+      </div>
+
+      <div class="mistakes-box">
+        <span>Mistakes:</span>
+        <span id="mistakesCount">0</span><span>/3</span>
+      </div>
+    </aside>
+
+    <!-- BOARD -->
+    <div class="sudoku-center">
+      <div class="board-wrap">
+        <div id="sudokuBoard" class="sudoku-board"></div>
+      </div>
+      <div class="numpad" id="numpad">
+        <button class="numpad-btn" data-num="1">1</button>
+        <button class="numpad-btn" data-num="2">2</button>
+        <button class="numpad-btn" data-num="3">3</button>
+        <button class="numpad-btn" data-num="4">4</button>
+        <button class="numpad-btn" data-num="5">5</button>
+        <button class="numpad-btn" data-num="6">6</button>
+        <button class="numpad-btn" data-num="7">7</button>
+        <button class="numpad-btn" data-num="8">8</button>
+        <button class="numpad-btn" data-num="9">9</button>
+        <button class="numpad-btn erase-btn" data-num="0">&#9003;</button>
+      </div>
+    </div>
+
+    <!-- LEADERBOARD -->
+    <aside class="sudoku-side leaderboard-side">
+      <h2 class="lb-title">Leaderboard</h2>
+      <div class="lb-tabs">
+        <button class="lb-tab active" data-diff="easy">Easy</button>
+        <button class="lb-tab" data-diff="medium">Medium</button>
+        <button class="lb-tab" data-diff="hard">Hard</button>
+      </div>
+      <div class="lb-list" id="lbList">
+        <p class="lb-empty">No scores yet. Be the first!</p>
+      </div>
+    </aside>
+  </div>
+</main>
+
+<!-- WIN MODAL -->
+<div id="winModal" class="modal hidden">
+  <div class="modal-card">
+    <div class="modal-icon">&#10003;</div>
+    <h2>Puzzle Solved!</h2>
+    <p id="winTime" class="modal-time"></p>
+    <p id="winStreak" class="modal-streak"></p>
+    <div class="modal-form">
+      <input type="text" id="playerName" placeholder="Your name" maxlength="20" />
+      <button class="btn-primary" id="saveScore">Save Score</button>
+    </div>
+    <button class="btn-ghost" id="playAgain">Play Again</button>
+  </div>
+</div>
+
+<!-- LOSE MODAL -->
+<div id="loseModal" class="modal hidden">
+  <div class="modal-card">
+    <div class="modal-icon lose-icon">&#10007;</div>
+    <h2>Too Many Mistakes</h2>
+    <p>Streak reset. Try again!</p>
+    <button class="btn-primary" id="tryAgain">Try Again</button>
+  </div>
+</div>
+
+<script src="static/js/sudoku.js"></script>
+</body>
+</html>
